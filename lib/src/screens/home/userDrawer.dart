@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:skulman/src/provider/bottomNav.dart';
 
 class UserDrawer extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class UserDrawer extends StatefulWidget {
 class _UserDrawerState extends State<UserDrawer> {
   @override
   Widget build(BuildContext context) {
+    BotomNav botom = Provider.of<BotomNav>(context);
     return Theme(
       child: Column(
         children: [
@@ -32,22 +35,33 @@ class _UserDrawerState extends State<UserDrawer> {
           ListTile(
             leading: Icon(FontAwesomeIcons.newspaper),
             title: Text("News"),
-            onTap: () {},
+            onTap: () {
+              botom.setIndex(1);
+              Navigator.of(context).pop();
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.handHolding),
             title: Text("BNS"),
-            onTap: () {},
+            onTap: () {
+              botom.setIndex(2);
+              Navigator.of(context).pop();
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.book),
             title: Text("Library"),
-            onTap: () {},
+            onTap: () {
+              botom.setIndex(3);
+              Navigator.of(context).pop();
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.pen),
             title: Text("Make Post"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).popAndPushNamed("/make/post");
+            },
           ),
           Divider(),
           Expanded(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skulman/src/provider/bottomNav.dart';
+import 'package:skulman/src/provider/newsProvider.dart';
+import 'package:skulman/src/provider/selectedNews.dart';
 import 'package:skulman/src/provider/userProvider.dart';
 import 'package:skulman/src/route/route.dart';
 import 'package:skulman/src/screens/first/cover.dart';
@@ -20,6 +22,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => StudentProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NewsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectedNewsProvider(),
         )
       ],
       child: MaterialApp(

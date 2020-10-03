@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skulman/src/screens/home/homepage.dart';
+import 'package:skulman/src/screens/home/news/selectedNewsPage.dart';
+import 'package:skulman/src/screens/home/post/makePost.dart';
 import 'package:skulman/src/screens/login/login.dart';
 import 'package:skulman/src/screens/signup/signup.dart';
 
@@ -26,6 +28,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => MainPage(),
         );
+      case "/selected/news":
+        return MaterialPageRoute(
+          builder: (_) => SelectedNewsPage(),
+        );
+      case "/make/post":
+        return MaterialPageRoute(builder: (_) => MakePost());
     }
   }
 }
