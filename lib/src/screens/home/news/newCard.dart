@@ -37,7 +37,7 @@ class _NewsCardsState extends State<NewsCards> {
               elevation: 4,
               child: ListTile(
                 contentPadding: EdgeInsets.all(10),
-                trailing: Icon(FontAwesomeIcons.forward),
+                trailing: Icon(FontAwesomeIcons.arrowRight),
                 leading: ConstrainedBox(
                   constraints: BoxConstraints(
                     minWidth: 120,

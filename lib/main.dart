@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skulman/src/provider/bottomNav.dart';
+import 'package:skulman/src/provider/libraryProvider.dart';
 import 'package:skulman/src/provider/newsProvider.dart';
 import 'package:skulman/src/provider/selectedNews.dart';
 import 'package:skulman/src/provider/userProvider.dart';
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => SelectedNewsProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LibraryProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
