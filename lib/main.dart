@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:skulman/src/provider/bns.dart';
 import 'package:skulman/src/provider/bottomNav.dart';
 import 'package:skulman/src/provider/libraryProvider.dart';
 import 'package:skulman/src/provider/newsProvider.dart';
+import 'package:skulman/src/provider/selectedBnc.dart';
 import 'package:skulman/src/provider/selectedNews.dart';
 import 'package:skulman/src/provider/userProvider.dart';
 import 'package:skulman/src/route/route.dart';
@@ -33,6 +35,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => LibraryProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => BNSProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectedBNS(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

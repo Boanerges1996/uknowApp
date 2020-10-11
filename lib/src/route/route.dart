@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skulman/src/screens/home/buyAndSell/selectedBNSPage.dart';
 import 'package:skulman/src/screens/home/homepage.dart';
 import 'package:skulman/src/screens/home/news/selectedNewsPage.dart';
 import 'package:skulman/src/screens/home/post/makePost.dart';
@@ -33,7 +34,13 @@ class RouteGenerator {
           builder: (_) => SelectedNewsPage(),
         );
       case "/make/post":
-        return MaterialPageRoute(builder: (_) => MakePost());
+        return MaterialPageRoute(
+          builder: (_) => MakePost(),
+        );
+      case "/selected/bns":
+        return MaterialPageRoute(
+          builder: (_) => SelectedBNSPage(),
+        );
     }
   }
 }

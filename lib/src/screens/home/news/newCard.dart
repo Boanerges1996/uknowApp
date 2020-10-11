@@ -33,87 +33,43 @@ class _NewsCardsState extends State<NewsCards> {
             Navigator.of(context).pushNamed("/selected/news");
           },
           child: Card(
-              margin: EdgeInsets.all(10),
-              elevation: 4,
-              child: ListTile(
-                contentPadding: EdgeInsets.all(10),
-                trailing: Icon(FontAwesomeIcons.arrowRight),
-                leading: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 120,
-                    minHeight: 120,
-                    maxWidth: 120,
-                    maxHeight: 120,
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: newsProv.getNews()[index].img,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                            Colors.red,
-                            BlendMode.colorBurn,
-                          ),
+            margin: EdgeInsets.all(10),
+            elevation: 4,
+            child: ListTile(
+              contentPadding: EdgeInsets.all(10),
+              trailing: Icon(FontAwesomeIcons.arrowRight),
+              leading: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: 120,
+                  minHeight: 120,
+                  maxWidth: 120,
+                  maxHeight: 120,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: newsProv.getNews()[index].img,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.red,
+                          BlendMode.colorBurn,
                         ),
                       ),
                     ),
-                    fit: BoxFit.fill,
-                    placeholder: (context, url) => CircularProgressIndicator(),
                   ),
+                  fit: BoxFit.fill,
+                  placeholder: (context, url) => CircularProgressIndicator(),
                 ),
-                title: Text(
-                  newsProv.getNews()[index].title,
-                  style: GoogleFonts.alice(fontSize: 15),
-                ),
-              )
-              // Row(
-              //   children: [
-              //     ConstrainedBox(
-              //       constraints: BoxConstraints(
-              //         minWidth: 120,
-              //         minHeight: 120,
-              //         maxWidth: 120,
-              //         maxHeight: 120,
-              //       ),
-              //       child: CachedNetworkImage(
-              //         imageUrl: newsProv.getNews()[index].img,
-              //       ),
-              //     ),
-              //     Container(
-              //       margin: EdgeInsets.all(10),
-              //       child: Column(
-              //         children: [
-              //           Text(
-              //             newsProv.getNews()[index].title,
-              //             style: GoogleFonts.alice(fontSize: 15),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //     Icon(FontAwesomeIcons.forward)
-              //   ],
-              // ),
               ),
+              title: Text(
+                newsProv.getNews()[index].title,
+                style: GoogleFonts.alice(fontSize: 15),
+              ),
+            ),
+          ),
         );
-        // return ListTile(
-
-        //   title: Text("No"),
-        //   leading: ConstrainedBox(
-        //     constraints: BoxConstraints(
-        //       minWidth: 90,
-        //       minHeight: 90,
-        //       maxWidth: 90,
-        //       maxHeight: 90,
-        //     ),
-        //     child: CachedNetworkImage(
-        //       imageUrl:
-        //           "https://images-eu.ssl-images-amazon.com/images/G/02/gc/designs/livepreview/amzn_logo_squid_noto_printfold_v2016_uk-main._CB463270660_.png",
-        //     ),
-        //   ),
-        //   trailing: Icon(Icons.forward),
-        // );
       },
     );
   }

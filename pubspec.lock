@@ -125,6 +125,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.2"
+  flutter_money_formatter:
+    dependency: "direct main"
+    description:
+      name: flutter_money_formatter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.3"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -197,7 +204,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.1"
+    version: "0.15.8"
   loading:
     dependency: "direct main"
     description:
