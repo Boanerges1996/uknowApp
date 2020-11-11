@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:skulman/src/provider/bottomNav.dart';
+import 'package:skulman/src/provider/userProvider.dart';
 
 class UserDrawer extends StatefulWidget {
   @override
@@ -12,17 +13,20 @@ class UserDrawer extends StatefulWidget {
 class _UserDrawerState extends State<UserDrawer> {
   @override
   Widget build(BuildContext context) {
+    StudentProvider stu = Provider.of<StudentProvider>(context);
     BotomNav botom = Provider.of<BotomNav>(context);
     return Theme(
       child: Column(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("Boanerges"),
-            accountEmail: Text("samsonnkrumah253@gmail.com"),
+            accountName: Text(stu.getStudentInfo().firstname +
+                " " +
+                stu.getStudentInfo().lastname),
+            accountEmail: Text(stu.getStudentInfo().email),
             currentAccountPicture: GestureDetector(
               child: CircleAvatar(
                 backgroundImage: CachedNetworkImageProvider(
-                  "https://avatars1.githubusercontent.com/u/43884482?s=460&u=28deefa0cac7c9c7fd0fffa70192d043e00a3f9f&v=4",
+                  stu.getStudentInfo().pic,
                 ),
               ),
             ),

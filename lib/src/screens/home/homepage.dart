@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skulman/src/provider/bottomNav.dart';
 import 'package:skulman/src/screens/home/botomNavigation.dart';
 import 'package:skulman/src/screens/home/buyAndSell/bns.dart';
@@ -18,6 +19,12 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    setlogOut();
+  }
+
+  void setlogOut() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.clear();
   }
 
   @override

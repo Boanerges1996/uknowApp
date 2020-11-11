@@ -3,6 +3,10 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:email_validator/email_validator.dart' as E;
 import 'package:loading/indicator/ball_spin_fade_loader_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:provider/provider.dart';
+import 'package:skulman/src/models/user.dart';
+import 'package:skulman/src/provider/userProvider.dart';
+import 'package:skulman/src/request/signup.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -11,6 +15,9 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final formkey = GlobalKey<FormState>();
+  String email;
+  String number;
+  String password;
   bool clickedSignup = false;
   final paswordValidator = MultiValidator(
     [
@@ -101,6 +108,11 @@ class _SignupState extends State<Signup> {
         } else
           return "Please enter a valid email address";
       },
+      onSaved: (data) {
+        setState(() {
+          email = data;
+        });
+      },
     );
   }
 
@@ -119,6 +131,11 @@ class _SignupState extends State<Signup> {
         } else
           return null;
       },
+      onSaved: (data) {
+        setState(() {
+          number = data;
+        });
+      },
     );
   }
 
@@ -133,19 +150,50 @@ class _SignupState extends State<Signup> {
         errorStyle: TextStyle(color: Colors.white),
       ),
       validator: paswordValidator,
+      onSaved: (data) {
+        setState(() {
+          password = data;
+        });
+      },
     );
   }
 
   Widget signupBtn(context) {
+    StudentProvider student = Provider.of<StudentProvider>(context);
     return ButtonTheme(
       minWidth: MediaQuery.of(context).size.width,
       height: 55,
       buttonColor: Colors.black,
       child: RaisedButton(
-        onPressed: () {
+        onPressed: () async {
           if (formkey.currentState.validate()) {
+            formkey.currentState.save();
             setState(() {
               clickedSignup = true;
+            });
+            SignupUser sign = new SignupUser(
+              email: email,
+              number: number,
+              password: password,
+            );
+            var info = await sign.signup();
+            if (info["logged"]) {
+              print(info["_id"]["\$oid"]);
+              StudentInfo newInfo = StudentInfo.fromDatabase(
+                  email: info["email"],
+                  pic: info["pic"],
+                  logged: info["logged"],
+                  telephone: info["telephone"],
+                  isLocal: info["isLocal"],
+                  year: info["year"],
+                  first: info["first"],
+                  id: info["_id"]["\$oid"]);
+              student.setStudentInfo(newInfo);
+              Navigator.of(context).popAndPushNamed("/second/form");
+            }
+            // print(info);
+            setState(() {
+              clickedSignup = false;
             });
           }
         },

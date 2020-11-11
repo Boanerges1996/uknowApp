@@ -5,6 +5,7 @@ import 'package:skulman/src/screens/home/news/selectedNewsPage.dart';
 import 'package:skulman/src/screens/home/post/makePost.dart';
 import 'package:skulman/src/screens/login/login.dart';
 import 'package:skulman/src/screens/signup/signup.dart';
+import 'package:skulman/src/screens/signup/signup2.dart';
 
 import '../../main.dart';
 
@@ -40,6 +41,10 @@ class RouteGenerator {
       case "/selected/bns":
         return MaterialPageRoute(
           builder: (_) => SelectedBNSPage(),
+        );
+      case "/second/form":
+        return MaterialPageRoute(
+          builder: (_) => SecondForm(),
         );
     }
   }

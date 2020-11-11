@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:skulman/src/screens/home/home/sliderImg.dart';
+import 'package:skulman/src/screens/home/news/newCard.dart';
+import 'package:skulman/src/screens/home/news/news.dart';
 
 class ActivityPage extends StatefulWidget {
   @override
@@ -8,8 +11,13 @@ class ActivityPage extends StatefulWidget {
 class _ActivityPageState extends State<ActivityPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Main user page"),
+    return SingleChildScrollView(
+      child: Container(
+          child: Column(
+        children: [
+          CarouselWithIndicatorDemo(),
+        ],
+      )),
     );
   }
 }
